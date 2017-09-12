@@ -15,11 +15,11 @@ var HelloWorld = React.createClass({
   componentDidMount: function() {
     $.ajax({
       context: this,
-      method: "get",
+      method: "GET",
       url: "https://www.bitstamp.net/api/v2/ticker/btcusd/",
       contentType: "application/json",
+      dataType: "jsonp",
       success: function(data) {
-        console.log('data: ', data);
         this.setState({data: data}); // Notice this
       }.bind(this),
       error: function(xhr, status, err) {
@@ -43,6 +43,7 @@ var HelloWorld2 = React.createClass({
     return (
       <div>
         <h5>{this.props.name}</h5>
+        <h5>{this.props.data}</h5>
       </div>  
     )
   }
